@@ -3,25 +3,38 @@ import ActionButton from './components/ActionButton';
 import AddTextInput from './components/AddTextInput';
 import ToDoItem from './components/ToDoItem';
 import initialState from './assets/seeddata.js';
+import Reducer from './components/Reducer.jsx';
 
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [task, setTask] = useState("");
+  const [todo, dispatch] = useReducer(Reducer, initialState);
+  const todoList = todo.map(item => {
+    return (
+      <ToDoItem
+        key={item.name}
+        item={item}
+        dispatch={dispatch}
+      />
+    );
+  });
 
   return (
     <>
       <h1>To Do List</h1>
       <div>
-        <AddTextInput />
+        <AddTextInput state={task} setState={setTask} />
         <ActionButton
-
+          type="add_task"
+          payload={{ task }}
+          dispatch={dispatch}
         >
           Add a Task
         </ActionButton>
       </div>
       <div>
-
+        {todoList}
       </div>
     </>
   )
