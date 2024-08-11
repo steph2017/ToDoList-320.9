@@ -1,8 +1,20 @@
-import React from 'react'
+import React from 'react';
+import Button from './Button';
 
-function ActionButton() {
+function ActionButton({
+    children,
+    className,
+    dispatch,
+    type,
+    payload
+}) {
     return (
-        <div>ActionButton</div>
+        <Button
+            onClick={() => dispatch({ type: type, payload: payload })}
+            className={className}
+        >
+            {children}
+        </Button>
     )
 }
 
