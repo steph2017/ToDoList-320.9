@@ -12,7 +12,7 @@ function ToDoItem({ todos, dispatch }) {
                 type="checkbox"
                 id="taskDone"
             />
-            <label htmlFor="taskDone">{todos.name}</label>
+            <label htmlFor="taskDone" className="todoName">{todos.name}</label>
             <ActionButton
                 className="edit_task"
                 dispatch={dispatch}
@@ -25,6 +25,15 @@ function ToDoItem({ todos, dispatch }) {
                 className="delete_task"
                 dispatch={dispatch}
                 type="delete_task"
+                payload={{ task: item.name }}
+            >
+                Delete
+            </ActionButton>
+            <AddTextInput state={editMode} setState={setEditMode} />
+            <ActionButton
+                className="save_task"
+                dispatch={dispatch}
+                type="save_task"
                 payload={{ task: item.name }}
             >
                 Delete
