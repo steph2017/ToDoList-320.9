@@ -1,8 +1,12 @@
 import React from 'react'
 
-function AddTextInput() {
+function AddTextInput({ state, setState }) {
     return (
-        <div>AddTextInput</div>
+        <input
+            type="text"
+            value={state}
+            onChange={(e) => setState(e.target.value)}
+        />
     )
 }
 
