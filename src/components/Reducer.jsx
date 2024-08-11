@@ -1,8 +1,21 @@
 import React from 'react'
 
-function Reducer() {
+function Reducer(state, { type, payload: { task, editMode } }) {
     return (
-        <div>Reducer</div>
+        switch (type) {
+        case {
+
+        }
+        case {
+
+        }
+        case {
+
+        }
+        default: {
+            throw Error("Unknown Action: " + type);
+        }
+    }
     )
 }
 

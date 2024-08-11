@@ -9,12 +9,12 @@ import './App.css'
 
 function App() {
   const [task, setTask] = useState("");
-  const [todo, dispatch] = useReducer(Reducer, initialState);
-  const todoList = todo.map(item => {
+  const [todos, dispatch] = useReducer(Reducer, initialState);
+  const todoList = todos.map(item => {
     return (
       <ToDoItem
         key={item.name}
-        item={item}
+        todo={item}
         dispatch={dispatch}
       />
     );
@@ -27,6 +27,7 @@ function App() {
         <AddTextInput state={task} setState={setTask} />
         <ActionButton
           type="add_task"
+          className="add_task"
           payload={{ task }}
           dispatch={dispatch}
         >
