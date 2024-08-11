@@ -3,13 +3,13 @@ import ActionButton from './components/ActionButton';
 import AddTextInput from './components/AddTextInput';
 import ToDoItem from './components/ToDoItem';
 import initialState from './assets/seeddata.js';
-import Reducer from './components/Reducer.jsx';
+import reducer from './assets/reducer.js';
 
 import './App.css'
 
 function App() {
   const [task, setTask] = useState("");
-  const [todos, dispatch] = useReducer(Reducer, initialState);
+  const [todos, dispatch] = useReducer(reducer, initialState);
   const todoList = todos.map(item => {
     return (
       <ToDoItem
