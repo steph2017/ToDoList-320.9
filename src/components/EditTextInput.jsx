@@ -1,6 +1,6 @@
 import React from 'react'
 
-function EditTextInput() {
+function EditTextInput({ value, onChange }) {
     return (
         <div>EditTextInput</div>
     )

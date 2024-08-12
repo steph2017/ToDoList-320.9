@@ -1,30 +1,34 @@
 import React from 'react'
 
-function reducer(state, { type, payload: { task } }) {
+function reducer(state, { type, payload: { id, editText, newName } }) {
     switch (type) {
         case "add_task": {
-            if (task === "") {
+            if (!newName) {
                 return state;
             }
-            return [{ name: task, completed: false }, ...state];
+            return [{ id: state.length + 1, name: newName, completed: false }, ...state];
 
         }
-        case "edit_task": {
-            return state.map((s) =>
-                s.name === task
-                    ? { ...s, editMode: true }
-                    : s
-            );
-        }
         case "save_task": {
-            return state.map((s) =>
-                s.editMode
-                    ? { ...s, name: newTaskName, editMode: false }
-                    : s
+            return state.map(s =>
+                s.id === id ? { ...s, name: editText } : s
             );
         }
         case "delete_task": {
-            return state.filter((s) => s.name !== task);
+            return state.filter((s) => s.id !== id);
+        }
+        case "toggle_task": {
+            return state.map(s =>
+                s.id === id ? { ...s, completed: !s.completed } : s
+            );
+        }
+        case "start_edit": {
+            // Starting edit mode is managed by component 
+            return state;
+        }
+        case "cancel_edit": {
+            // Canceling edit mode is managed at component level
+            return state;
         }
         default: {
             throw Error("Unknown Action: " + type);

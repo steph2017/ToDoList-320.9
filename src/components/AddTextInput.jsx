@@ -4,7 +4,7 @@ function AddTextInput({ state, setState }) {
     return (
         <input
             type="text"
-            value={state}
+            value={state || ""}
             onChange={(e) => setState(e.target.value)}
         />
     )

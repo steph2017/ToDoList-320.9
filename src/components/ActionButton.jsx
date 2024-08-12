@@ -6,11 +6,19 @@ function ActionButton({
     className,
     dispatch,
     type,
-    payload
+    payload,
+    onClick
 }) {
+    const handleClick = () => {
+        if (onClick) {
+            onClick();
+        } else {
+            dispatch({ type, payload });
+        }
+    };
     return (
         <Button
-            onClick={() => dispatch({ type: type, payload: payload })}
+            onClick={handleClick}
             className={className}
         >
             {children}
