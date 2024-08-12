@@ -1,11 +1,16 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ActionButton from './ActionButton';
 import EditTextInput from './EditTextInput';
 
 function ToDoItem({ todo, dispatch }) {
     const [editMode, setEditMode] = useState(false);
     const [editText, setEditText] = useState(todo.title);
+
+    useEffect(() => {
+        // Update local editText state when todo changes
+        setEditText(todo.title);
+    }, [todo]);
 
     const handleEditClick = () => {
         setEditMode(true);

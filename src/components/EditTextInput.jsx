@@ -2,7 +2,11 @@ import React from 'react'
 
 function EditTextInput({ value, onChange }) {
     return (
-        <div>EditTextInput</div>
+        <input
+            type="text"
+            value={value || ""}
+            onChange={onChange}
+        />
     )
 }
 

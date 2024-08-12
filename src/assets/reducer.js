@@ -6,12 +6,12 @@ function reducer(state, { type, payload: { id, editText, newName } }) {
             if (!newName) {
                 return state;
             }
-            return [{ id: state.length + 1, name: newName, completed: false }, ...state];
+            return [{ id: state.length + 1, title: newName, completed: false }, ...state];
 
         }
         case "save_task": {
             return state.map(s =>
-                s.id === id ? { ...s, name: editText } : s
+                s.id === id ? { ...s, title: editText } : s
             );
         }
         case "delete_task": {
